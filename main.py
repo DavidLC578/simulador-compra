@@ -7,6 +7,7 @@ Opción 2: Ver todos o un usuario
 
 # Listas y/o diccionarios
 usuarios = {}
+compras = {}
 
 while salir == False:
     match opc:
@@ -50,7 +51,7 @@ Opción 2: Ver todos o un usuario
                     usuario = input("Introduce el dni de un usuario para ver sus datos: ")
                     if usuario in usuarios:
                         for clave,valor in usuarios.items(): 
-                            print("Nombre: ",clave,end=": ")
+                            print("DNI: ",clave,end=": ")
                             for dato in valor:
                                 print(dato,end=" ")
                     opc = int(input("""
@@ -65,7 +66,36 @@ Introduce una opción:
 Opción 1: Registrar un usuario
 Opción 2: Ver todos o un usuario
 """))
-                    
+        case 3:
+            print("Ha escogido registrar una compra")
+            idcompra = input("Escribe el numero de compra: ")
+            dni = input("Cuál es el dni del usuario: ")
+            productos=[]
+            cantp = int(input())
+            print("Introduce los productos")
+            for i in range(0,cantp):
+                productos.append(input())
+            compras[idcompra]=[dni,productos]
+            opc = int(input(""" 
+
+Introduce una opción: 
+Opción 1: Registrar un usuario
+Opción 2: Ver todos o un usuario
+"""))
+        case 4:
+            print("Ha escogido ver una compra")
+            for clave, valor in compras.items():
+                print(clave,end=": ")
+                for dato in valor:
+                    print(dato[0],end=" ")
+                    for prod in valor[1]:
+                        print(prod,end=" ")
+            opc = int(input(""" 
+
+Introduce una opción: 
+Opción 1: Registrar un usuario
+Opción 2: Ver todos o un usuario
+"""))
 
 
 # usuarios = {"wieur":[234132,"asdfasd"]}
