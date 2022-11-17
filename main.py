@@ -8,7 +8,7 @@ Opción 2: Ver todos o un usuario
 # Listas y/o diccionarios
 usuarios = {123: ["david", "laltasdf", "españa", 2341312],
             456: ["carlos", "cabeza", "españa", 76543]}
-compras = {}
+compras = {123: [123, ["webos", "mansana"]]}
 
 while salir == False:
     match opc:
@@ -70,8 +70,8 @@ Opción 2: Ver todos o un usuario
 """))
         case 3:
             print("Ha escogido registrar una compra")
-            idcompra = input("Escribe el numero de compra: ")
-            dni = input("Cuál es el dni del usuario: ")
+            idcompra = int(input("Escribe el numero de compra: "))
+            dni = int(input("Cuál es el dni del usuario: "))
             productos = []
             cantp = int(
                 input("Introduce la cantidad de productos que quieres registrar: "))
@@ -88,15 +88,11 @@ Opción 2: Ver todos o un usuario
         case 4:
             print("Ha escogido ver una compra")
             compra = int(input("Introduce número de compra: "))
-            if compra in compras:
-                # for clave, valor in compras.items():
-                #     print(clave,end=": ")
-                #     for dato in valor:
-                #         print(dato,end=" ")
-                print(compra)
-                for i in compras.keys():
-                    pass
-
+            if compra in compras.keys():
+                print(compra, end=": ")
+                for dato in compras[compra,[1]]:
+                    print(dato, end=" ")
+                    
             opc = int(input(""" 
 
 Introduce una opción: 
