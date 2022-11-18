@@ -1,14 +1,17 @@
 # Variables
 salir = False
 opc = int(input("""Introduce una opción:
-Opción 1: Registrar un usuario
-Opción 2: Ver todos o un usuario
+1: Registrar un usuario
+2: Ver todos o un usuario
+3: Registrar una compra en un usuario
+4: Ver una compra de un usuario
 """))
 
 # Listas y/o diccionarios
-usuarios = {123:["david","lattanzio","españa",7189563],
-            456:["alvaro","garcia","españa",163481]}
-compras = {987:[123]}
+usuarios = {}
+compras = {}
+
+# Bucle principal
 while salir == False:
     match opc:
         case 1:
@@ -18,25 +21,24 @@ while salir == False:
             apellido = input("Escribe el apellido: ")
             pais = input("Escribe el pais: ")
             telefono = input("Escribe el telefono: ")
-
             usuarios[dni] = [nombre, apellido, pais, telefono]
             opc = int(input("""
 
 Introduce una opción:
-Opción 1: Registrar un usuario
-Opción 2: Ver todos o un usuario
+1: Registrar un usuario
+2: Ver todos o un usuario
+3: Registrar una compra en un usuario
+4: Ver una compra de un usuario
 """))
         case 2:
-            # A partir de aquí se elige la opcion, ver todos los  usuarios o uno en concreto
             opc2 = int(input("""
 
 Para ver todos o varios usuarios:
-Opción 1: Ver todos
-Opción 2: Ver un usuario
+1: Ver todos
+2: Ver un usuario
 """))
-            match opc2:
+            match opc2: # En con esta opc de este match se elige si quieres ver todos o un solo usuario
                 case 1:
-                    # print(usuarios)
                     for clave, valor in usuarios.items():
                         print("DNI: ", clave, end=": ")
                         for dato in valor:
@@ -44,8 +46,10 @@ Opción 2: Ver un usuario
                     opc = int(input("""
 
 Introduce una opción:
-Opción 1: Registrar un usuario
-Opción 2: Ver todos o un usuario
+1: Registrar un usuario
+2: Ver todos o un usuario
+3: Registrar una compra en un usuario
+4: Ver una compra de un usuario
 """))
                 case 2:
                     usuario = int(
@@ -58,14 +62,18 @@ Opción 2: Ver todos o un usuario
                     opc = int(input("""
 
 Introduce una opción:
-Opción 1: Registrar un usuario
-Opción 2: Ver todos o un usuario
+1: Registrar un usuario
+2: Ver todos o un usuario
+3: Registrar una compra en un usuario
+4: Ver una compra de un usuario
 """))
                 case _:
                     opc = int(input("""
 Introduce una opción: 
-Opción 1: Registrar un usuario
-Opción 2: Ver todos o un usuario
+1: Registrar un usuario
+2: Ver todos o un usuario
+3: Registrar una compra en un usuario
+4: Ver una compra de un usuario
 """))
         case 3:
             print("Ha escogido registrar una compra")
@@ -78,14 +86,16 @@ Opción 2: Ver todos o un usuario
             for i in range(0, cantp):
                 productos.append(input())
             compras[idcompra] = [dni, productos]
-            #// compras[idcompra][0]
+            # compras[idcompra][0]
             for x in compras[idcompra][1]:
                 print(x)
             opc = int(input(""" 
 
 Introduce una opción: 
-Opción 1: Registrar un usuario
-Opción 2: Ver todos o un usuario
+1: Registrar un usuario
+2: Ver todos o un usuario
+3: Registrar una compra en un usuario
+4: Ver una compra de un usuario
 """))
         case 4:
             print("Ha escogido ver una compra")
@@ -93,13 +103,13 @@ Opción 2: Ver todos o un usuario
             if compra in compras.keys():
                 print(compra, end=": ")
                 for dato in compras[compra][1]:
-                    print(dato, end=" ")
-                    
+                    print(dato, end=" ")   
             opc = int(input(""" 
-
 Introduce una opción: 
-Opción 1: Registrar un usuario
-Opción 2: Ver todos o un usuario
+1: Registrar un usuario
+2: Ver todos o un usuario
+3: Registrar una compra en un usuario
+4: Ver una compra de un usuario
 """))
 
 
