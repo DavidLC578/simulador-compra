@@ -6,10 +6,9 @@ Opción 2: Ver todos o un usuario
 """))
 
 # Listas y/o diccionarios
-usuarios = {123: ["david", "laltasdf", "españa", 2341312],
-            456: ["carlos", "cabeza", "españa", 76543]}
-compras = {123: [123, ["webos", "mansana"]]}
-
+usuarios = {123:["david","lattanzio","españa",7189563],
+            456:["alvaro","garcia","españa",163481]}
+compras = {987:[123]}
 while salir == False:
     match opc:
         case 1:
@@ -79,6 +78,9 @@ Opción 2: Ver todos o un usuario
             for i in range(0, cantp):
                 productos.append(input())
             compras[idcompra] = [dni, productos]
+            #// compras[idcompra][0]
+            for x in compras[idcompra][1]:
+                print(x)
             opc = int(input(""" 
 
 Introduce una opción: 
@@ -90,7 +92,7 @@ Opción 2: Ver todos o un usuario
             compra = int(input("Introduce número de compra: "))
             if compra in compras.keys():
                 print(compra, end=": ")
-                for dato in compras[compra,[1]]:
+                for dato in compras[compra][1]:
                     print(dato, end=" ")
                     
             opc = int(input(""" 
@@ -101,8 +103,4 @@ Opción 2: Ver todos o un usuario
 """))
 
 
-# usuarios = {1:[12212314,"webox","pan"]}
-# for clave, valor in usuarios.items():
-#     print(clave,end=": ")
-#     for dato in valor:
-#         print(dato,end=" ")
+
