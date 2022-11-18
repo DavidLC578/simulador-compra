@@ -111,6 +111,9 @@ Introduce una opción:
 3: Registrar una compra en un usuario
 4: Ver una compra de un usuario
 """))
+        case _:
+            print("Ha salido del programa")
+            salir = True
 
 
 
