@@ -106,6 +106,9 @@ Introduce una opción:
             if compra in compras.keys():
                 print(compra, end=": ")
                 print(compras[compra][0],end=", ")
+                dni = compras[compra][0]
+                if dni in usuarios:
+                    print(usuarios[dni][0],end=", ")
                 for dato in compras[compra][1]:
                     print(dato, end=" ")   
             opc = int(input(""" 
