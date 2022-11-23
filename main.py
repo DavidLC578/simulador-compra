@@ -8,6 +8,60 @@ opc = int(input("""Introduce una opción:
 5: Salir del programa
 """))
 
+def añadirUsuario():
+    print("Ha escogido registrar un usuario")
+    dni = int(input("Cuál es el dni del usuario: "))
+    if dni in usuarios:
+        print("Este usuario ya está registrado")
+    else:
+        nombre = input("Escribe el nombre: ")
+        apellido = input("Escribe el apellido: ")
+        pais = input("Escribe el pais: ")
+        telefono = input("Escribe el telefono: ")
+        usuarios[dni] = [nombre, apellido, pais, telefono]
+    
+def verUsuarios():
+    for clave, valor in usuarios.items():
+        print("DNI: ", clave, end=": ")
+        for dato in valor:
+            print(dato, end=" ")
+
+def verUsuario():
+    usuario = int(
+        input("Introduce el dni de un usuario para ver sus datos: "))
+    if usuario in usuarios.keys():
+        print(usuario, end=": ")
+        for dato in usuarios[usuario]:
+            print(dato, end=" ")
+
+def registrarCompra():
+    print("Ha escogido registrar una compra")
+    idcompra = int(input("Escribe el numero de compra: "))
+    dni2 = int(input("Cuál es el dni del usuario: "))
+    productos = []
+    cantp = int(
+        input("Introduce la cantidad de productos que quieres registrar: "))
+    print("Introduce los productos")
+    for i in range(0, cantp):
+        producto = input("Introducir producto: ")
+        precio = int(input("El precio sería: "))
+        productos.append([producto,precio])
+    compras[idcompra] = [dni2, productos]
+
+def verCompra():
+    print("Ha escogido ver una compra")
+    compra = int(input("Introduce número de compra: "))
+    if compra in compras.keys():
+        print(compra, end=": ")
+        print(compras[compra][0],end=", ")
+        dni = compras[compra][0]
+        if dni in usuarios:
+            print(usuarios[dni][0],end=", ")
+        for datos in compras[compra][1]:
+            for dato in datos:
+                print(dato,end=" ")
+
+
 # Listas y/o diccionarios
 usuarios = {}
 compras = {}
@@ -17,15 +71,8 @@ while salir == False:
     match opc:
         # En el caso uno se registra un nuevo usuario
         case 1:
-            print("Ha escogido registrar un usuario")
-            dni = int(input("Cuál es el dni del usuario: "))
-            nombre = input("Escribe el nombre: ")
-            apellido = input("Escribe el apellido: ")
-            pais = input("Escribe el pais: ")
-            telefono = input("Escribe el telefono: ")
-            usuarios[dni] = [nombre, apellido, pais, telefono]
+            añadirUsuario()
             opc = int(input("""
-
 Introduce una opción:
 1: Registrar un usuario
 2: Ver todos o un usuario
@@ -45,10 +92,7 @@ Para ver todos o varios usuarios:
             match opc2: 
                 # Esta opción uno es para ver todos los usuarios registrados
                 case 1:
-                    for clave, valor in usuarios.items():
-                        print("DNI: ", clave, end=": ")
-                        for dato in valor:
-                            print(dato, end=" ")
+                    verUsuarios()
                     opc = int(input("""
 
 Introduce una opción:
@@ -60,13 +104,7 @@ Introduce una opción:
 """))
                 # Con la opción dos se ve un usuario en concreto
                 case 2:
-                    usuario = int(
-                        input("Introduce el dni de un usuario para ver sus datos: "))
-                    if usuario in usuarios.keys():
-                        print(usuario, end=": ")
-                        for dato in usuarios[usuario]:
-                            print(dato, end=" ")
-
+                    verUsuario()
                     opc = int(input("""
 
 Introduce una opción:
@@ -86,18 +124,7 @@ Introduce una opción:
 5: Salir del programa
 """))
         case 3:
-            print("Ha escogido registrar una compra")
-            idcompra = int(input("Escribe el numero de compra: "))
-            dni2 = int(input("Cuál es el dni del usuario: "))
-            productos = []
-            cantp = int(
-                input("Introduce la cantidad de productos que quieres registrar: "))
-            print("Introduce los productos")
-            for i in range(0, cantp):
-                producto = input("Introducir producto: ")
-                precio = int(input("El precio sería: "))
-                productos.append([producto,precio])
-            compras[idcompra] = [dni2, productos]
+            registrarCompra()
             opc = int(input(""" 
 
 Introduce una opción: 
@@ -107,18 +134,8 @@ Introduce una opción:
 4: Ver una compra de un usuario
 5: Salir del programa
 """))
-        case 4:
-            print("Ha escogido ver una compra")
-            compra = int(input("Introduce número de compra: "))
-            if compra in compras.keys():
-                print(compra, end=": ")
-                print(compras[compra][0],end=", ")
-                dni = compras[compra][0]
-                if dni in usuarios:
-                    print(usuarios[dni][0],end=", ")
-                for datos in compras[compra][1]:
-                    for dato in datos:
-                        print(dato,end=" ")
+        case 4: 
+            verCompra()
             opc = int(input(""" 
 
 Introduce una opción: 
