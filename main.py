@@ -15,6 +15,7 @@ compras = {}
 # Bucle principal
 while salir == False:
     match opc:
+        # En el caso uno se registra un nuevo usuario
         case 1:
             print("Ha escogido registrar un usuario")
             dni = int(input("Cuál es el dni del usuario: "))
@@ -32,14 +33,17 @@ Introduce una opción:
 4: Ver una compra de un usuario
 5: Salir del programa
 """))
+        # En este caso dos, se daría dos opciones: ver todos los usuarios o ver sólo uno en concreto
         case 2:
+            # Aquí se pide una nueva opción para elegir si ver todos o un usuario
             opc2 = int(input("""
 
 Para ver todos o varios usuarios:
 1: Ver todos
 2: Ver un usuario
-"""))
-            match opc2: # En con esta opc de este match se elige si quieres ver todos o un solo usuario
+"""))   
+            match opc2: 
+                # Esta opción uno es para ver todos los usuarios registrados
                 case 1:
                     for clave, valor in usuarios.items():
                         print("DNI: ", clave, end=": ")
@@ -54,6 +58,7 @@ Introduce una opción:
 4: Ver una compra de un usuario
 5: Salir del programa
 """))
+                # Con la opción dos se ve un usuario en concreto
                 case 2:
                     usuario = int(
                         input("Introduce el dni de un usuario para ver sus datos: "))
