@@ -89,7 +89,9 @@ Introduce una opción:
                 input("Introduce la cantidad de productos que quieres registrar: "))
             print("Introduce los productos")
             for i in range(0, cantp):
-                productos.append(input())
+                producto = input("Introducir producto: ")
+                precio = int(input("El precio sería: "))
+                productos.append([producto,precio])
             compras[idcompra] = [dni2, productos]
             opc = int(input(""" 
 
@@ -109,8 +111,9 @@ Introduce una opción:
                 dni = compras[compra][0]
                 if dni in usuarios:
                     print(usuarios[dni][0],end=", ")
-                for dato in compras[compra][1]:
-                    print(dato, end=" ")   
+                for datos in compras[compra][1]:
+                    for dato in datos:
+                        print(dato,end=" ")
             opc = int(input(""" 
 
 Introduce una opción: 
